@@ -1,1 +1,1 @@
-from irs_soi.tests import *
+from taxstats.tests import *

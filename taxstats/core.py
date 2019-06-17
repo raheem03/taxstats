@@ -1,5 +1,3 @@
-# to do: get all states for other dataset
-
 import urllib
 
 class taxstats(object):
