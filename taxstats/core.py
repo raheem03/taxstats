@@ -14,7 +14,7 @@ class taxstats(object):
         self.product = product
         self.level = level
         self.state = state
-        if level == 'us':
+        if self.level == 'us':
             self.state = 'us'
         
         statenumbers = {
