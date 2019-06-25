@@ -83,7 +83,7 @@ class taxstats(object):
                 if (self.level != None or self.state != None):
                     raise ValueError("If product is 'csv', level and state must be empty")
                 if self.year not in range(self.mincompleteyr, self.maxyr + 1):
-                    raise ValueError("Data only available from {} onward.".format(self.mincompleteyr))
+                    raise ValueError("Data only available from {} to {}.".format(self.mincompleteyr, self.maxyr))
             elif self.product == 'xls':
                 if self.level not in ['us', 'state', 'county', '*']:
                     raise ValueError("if product is 'xls', level must be 'us', 'state', 'county', or '*'")
@@ -92,9 +92,9 @@ class taxstats(object):
                 if self.level in ['state', 'county'] and self.state == None:
                     raise ValueError("If level is 'state' or 'county', state cannot be empty")
                 if self.level in ['us', 'state'] and self.year not in range(self.minstateyr, self.maxyr + 1):
-                    raise ValueError("Data only available from {} onward.".format(self.mincompleteyr))
+                    raise ValueError("Data only available from {} to {}.".format(self.mincompleteyr, self.maxyr))
                 if self.level == 'county' and self.year not in range(self.mincountyyr, self.maxyr + 1):
-                    raise ValueError("Data only available from {} onward.".format(self.mincountyyr))
+                    raise ValueError("Data only available from {} to {}.".format(self.mincountyyr, self.maxyr))
 
                 if self.state != None and self.state not in statenumbers:
                     raise ValueError("state must represent two digit state abbreviation")
