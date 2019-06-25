@@ -99,7 +99,7 @@ class taxstats(object):
                         raise ValueError("Data only available from {} onward.".format(self.minstateyr))
                         raise ValueError("Data only available from {} onward.".format(self.mincountyyr))
 
-                if self.state != None and self.state not in self.statenumbers:
+                if self.state != None and self.state not in statenumbers:
                     raise ValueError("state must represent two digit state abbreviation")
 
     def get_table(self):
