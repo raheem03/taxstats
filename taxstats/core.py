@@ -76,8 +76,7 @@ class taxstats(object):
         except:
             pass
         
-        #pseudo code for errors!
-        if table == "2":
+        if self.table == "2":
             if self.product not in ['csv', 'xls']:
                 raise ValueError("Product must be 'csv' or 'xls'")
             if self.product == 'csv':
