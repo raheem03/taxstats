@@ -82,22 +82,19 @@ class taxstats(object):
             if self.product == 'csv':
                 if (self.level != None or self.state != None):
                     raise ValueError("If product is 'csv', level and state must be empty")
+                if self.year not in range(self.mincompleteyr, self.maxyr + 1):
+                    raise ValueError("Data only available from {} onward.".format(self.mincompleteyr))
             elif self.product == 'xls':
                 if self.level not in ['us', 'state', 'county', '*']:
                     raise ValueError("if product is 'xls', level must be 'us', 'state', 'county', or '*'")
-                if self.level in ['us', '*'] and self.state != None:
-                    raise ValueError("If level is '*' or 'us', state must be empty")
+                if self.level =='*' and self.state != None:
+                    raise ValueError("If level is '*', state must be empty")
                 if self.level in ['state', 'county'] and self.state == None:
                     raise ValueError("If level is 'state' or 'county', state cannot be empty")
-                
-                if self.product == 'csv' and self.year not in range(self.mincompleteyr, self.maxyr + 1):
+                if self.level in ['us', 'state'] and self.year not in range(self.minstateyr, self.maxyr + 1):
                     raise ValueError("Data only available from {} onward.".format(self.mincompleteyr))
-                elif self.product == 'xls':
-                    if self.level in ['us', 'state'] and self.year not in range(self.minstateyr, self.maxyr + 1):
-                        raise ValueError("Data only available from {} onward.".format(self.mincompleteyr))
-                    if self.level == 'county' and self.year not in range(self.mincountyyr, self.maxyr + 1):
-                        raise ValueError("Data only available from {} onward.".format(self.minstateyr))
-                        raise ValueError("Data only available from {} onward.".format(self.mincountyyr))
+                if self.level == 'county' and self.year not in range(self.mincountyyr, self.maxyr + 1):
+                    raise ValueError("Data only available from {} onward.".format(self.mincountyyr))
 
                 if self.state != None and self.state not in statenumbers:
                     raise ValueError("state must represent two digit state abbreviation")

@@ -2,7 +2,8 @@
 taxstats
 =======
 
-A Python package for downloading IRS SOI Tax Stats data, with utilities for parsing the data dictionary.
+A Python package for downloading IRS SOI Tax Stats data, with utilities for
+parsing the data dictionary.
 
 Overview
 ========
